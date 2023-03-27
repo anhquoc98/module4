@@ -1,4 +1,4 @@
-package com.example.bai_tap_2;
+package com.example.exercise_2;
 
 import java.io.*;
 import javax.servlet.http.*;
