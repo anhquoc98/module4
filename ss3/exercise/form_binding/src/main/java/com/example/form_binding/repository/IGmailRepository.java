@@ -7,5 +7,7 @@ import java.util.List;
 public interface IGmailRepository {
     Gmail list();
 
-    void add(Gmail gmail);
+    String[] lanuages();
+
+    int[] pageSize();
 }

@@ -16,7 +16,13 @@ public class GmailService implements IGmailService {
     }
 
     @Override
-    public void add(Gmail gmail) {
-        gmailRepository.add(gmail);
+    public String[] lanuages() {
+        return gmailRepository.lanuages();
     }
+
+    @Override
+    public int[] pageSize() {
+        return gmailRepository.pageSize();
+    }
+
 }

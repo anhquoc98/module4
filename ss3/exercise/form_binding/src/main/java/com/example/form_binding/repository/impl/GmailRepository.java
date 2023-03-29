@@ -7,16 +7,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GmailRepository implements IGmailRepository {
-    static Gmail gmail = new Gmail("English",25,false,"Thor King,Asgard");
+//    static Gmail gmail = new Gmail("English", 25, false, "Thor King,Asgard");
 
 
     @Override
     public Gmail list() {
-        return gmail;
+        return null;
     }
 
     @Override
-    public void add(Gmail gmail) {
-//        gmailList.add(gmail);
+    public String[] lanuages() {
+        String[] laguage = {"English", "Vietnamese", "Japanese", "Chinese"};
+        return laguage;
     }
+
+    @Override
+    public int[] pageSize() {
+        int[] size = {5, 10, 15, 25, 50, 100};
+        return size;
+    }
+
+
 }

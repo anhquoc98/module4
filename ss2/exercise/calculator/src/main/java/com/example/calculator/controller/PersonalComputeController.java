@@ -1,7 +1,6 @@
-package com.example.exercise2.controller;
+package com.example.calculator.controller;
 
-import com.example.exercise2.service.ICalculateService;
-import com.example.exercise2.service.impl.CalculateService;
+import com.example.calculator.service.impl.CalculateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,13 +21,13 @@ public class PersonalComputeController {
     private CalculateService service;
 
     @PostMapping("/create")
-    public String showResult(@RequestParam(name = "number1", defaultValue = "0") Double number1,
-                             @RequestParam(name = "number2", defaultValue = "0") Double number2,
+    public String showResult(@RequestParam(name = "numberFirst", defaultValue = "0") Double numberFirst,
+                             @RequestParam(name = "numberSecond", defaultValue = "0") Double numberSecond,
                              @RequestParam String calculation, Model model) {
-        double result = 0;
+
 
         model.addAttribute("calculation", calculation);
-        model.addAttribute("result", service.calculator(number1, number2, result, calculation));
+        model.addAttribute("result", service.calculator(numberFirst, numberSecond, calculation));
         return "create";
     }
 }
