@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/create" method="post">
+<form action="create" method="post">
     <input type="number" name="number1">
     <input type="number" name="number2">
     <input type="submit" value="+" name="calculation">

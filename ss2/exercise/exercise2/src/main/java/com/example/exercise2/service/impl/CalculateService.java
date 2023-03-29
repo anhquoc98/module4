@@ -3,7 +3,7 @@ package com.example.exercise2.service.impl;
 import com.example.exercise2.service.ICalculateService;
 import org.springframework.stereotype.Service;
 
-
+@Service
 public class CalculateService implements ICalculateService {
 
     @Override
