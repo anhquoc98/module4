@@ -2,14 +2,14 @@ package com.example.form_binding.model;
 
 public class Gmail {
     private String languages;
-    private int pageSize;
-    private boolean spamsFilter;
+    private Integer pageSize;
+    private Boolean spamsFilter;
     private String signature;
 
     public Gmail() {
     }
 
-    public Gmail(String languages, int pageSize, boolean spamsFilter, String signature) {
+    public Gmail(String languages, Integer pageSize, Boolean spamsFilter, String signature) {
         this.languages = languages;
         this.pageSize = pageSize;
         this.spamsFilter = spamsFilter;
@@ -24,19 +24,19 @@ public class Gmail {
         this.languages = languages;
     }
 
-    public int getPageSize() {
+    public Integer getPageSize() {
         return pageSize;
     }
 
-    public void setPageSize(int pageSize) {
+    public void setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
     }
 
-    public boolean isSpamsFilter() {
+    public Boolean getSpamsFilter() {
         return spamsFilter;
     }
 
-    public void setSpamsFilter(boolean spamsFilter) {
+    public void setSpamsFilter(Boolean spamsFilter) {
         this.spamsFilter = spamsFilter;
     }
 

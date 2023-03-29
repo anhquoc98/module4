@@ -9,41 +9,39 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Update</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-<form:form action="list" method="get" modelAttribute="gmail">
-    <table class="table">
-        <tr>
-            <th scope="col"><label>Languages:</label></th>
-            <th scope="col"><form:select path="languages">
-                <form:options items="${languages}"/>
-            </form:select></th>
-
-        </tr>
-        <tr>
-            <th scope="col">Page Size:</th>
-            <th scope="col">Show<form:select path="pageSize">
-                <form:options items="${size}"/>
-            </form:select> emails per page
-            </th>
-        </tr>
-
-        <tr>
-            <th scope="col">Spams filter</th>
-            <th scope="col"><form:checkbox path="spamsFilter" />Enable spams filter
-            </th>
-        </tr>
-
-        <tr>
-            <th scope="col">Signature</th>
-            <th scope="col"><form:textarea path="signature"/>
-
-            </th>
-        </tr>
-    </table>
-
-<button type="submit">Update</button>
+<h1>Setting</h1>
+<form:form action="/gmail" method="post" modelAttribute="gmail">
+    <div class="mb-3">
+        <label>Languages:</label>
+        <form:select path="languages" items="${lanuagesList}"/>
+    </div>
+    <div class="mb-3">
+        <label>Page Size:</label>
+        <span>Show</span>
+        <form:select path="pageSize" items="${pageSizeList}"/>
+        <span>emails per page</span>
+    </div>
+    <div class="mb-3">
+        <label>Spams filter:</label>
+        <form:checkbox path="spamsFilter"/>
+        <span>Enable spams filter</span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="signature">Signature:</label>
+        <form:textarea path="signature" id="signature"/>
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Update</button>
+        <input type="reset" class="btn btn-secondary" value="Cancel"/>
+    </div>
 </form:form>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
 </html>

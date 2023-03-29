@@ -3,29 +3,35 @@ package com.example.form_binding.repository.impl;
 import com.example.form_binding.model.Gmail;
 import com.example.form_binding.repository.IGmailRepository;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class GmailRepository implements IGmailRepository {
-//    static Gmail gmail = new Gmail("English", 25, false, "Thor King,Asgard");
+    private static Gmail gmail;
+    private final String[] lanuagesList = new String[]{"English", "Vietnamese", " Japanese", "Chinese"};
+    private final Integer[] pageSizeList = new Integer[]{5, 10, 15, 25, 50, 100};
 
-
-    @Override
-    public Gmail list() {
-        return null;
+    {
+        gmail = new Gmail("English", 25, false, "Thor, King, Asgard");
     }
 
     @Override
-    public String[] lanuages() {
-        String[] laguage = {"English", "Vietnamese", "Japanese", "Chinese"};
-        return laguage;
+    public Gmail gmail() {
+        return gmail;
     }
 
     @Override
-    public int[] pageSize() {
-        int[] size = {5, 10, 15, 25, 50, 100};
-        return size;
+    public void update(Gmail gmails) {
+        gmail.setLanguages(gmails.getLanguages());
+        gmail.setPageSize(gmails.getPageSize());
+        gmail.setSpamsFilter(gmails.getSpamsFilter());
+        gmail.setSignature(gmails.getSignature());
     }
 
+    @Override
+    public String[] getlanuagesList() {
+        return lanuagesList;
+    }
 
+    @Override
+    public Integer[] getpageSizeList() {
+        return pageSizeList;
+    }
 }

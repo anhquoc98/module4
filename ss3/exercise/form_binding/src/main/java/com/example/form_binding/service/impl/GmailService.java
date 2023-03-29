@@ -6,23 +6,29 @@ import com.example.form_binding.service.IGmailService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class GmailService implements IGmailService {
     GmailRepository gmailRepository = new GmailRepository();
 
+
     @Override
-    public Gmail list() {
-        return gmailRepository.list();
+    public Gmail gmail() {
+        return gmailRepository.gmail();
     }
 
     @Override
-    public String[] lanuages() {
-        return gmailRepository.lanuages();
+    public void update(Gmail gmails) {
+        gmailRepository.update(gmails);
     }
 
     @Override
-    public int[] pageSize() {
-        return gmailRepository.pageSize();
+    public String[] getlanuagesList() {
+        return gmailRepository.getlanuagesList();
     }
 
+    @Override
+    public Integer[] getpageSizeList() {
+        return gmailRepository.getpageSizeList();
+    }
 }

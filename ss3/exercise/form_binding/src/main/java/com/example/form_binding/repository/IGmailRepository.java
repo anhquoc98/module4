@@ -2,12 +2,12 @@ package com.example.form_binding.repository;
 
 import com.example.form_binding.model.Gmail;
 
-import java.util.List;
-
 public interface IGmailRepository {
-    Gmail list();
+    Gmail gmail();
 
-    String[] lanuages();
+    void update(Gmail gmails);
 
-    int[] pageSize();
+    String[] getlanuagesList();
+
+    Integer[] getpageSizeList();
 }

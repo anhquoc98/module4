@@ -5,8 +5,11 @@ import com.example.form_binding.model.Gmail;
 import java.util.List;
 
 public interface IGmailService {
-    Gmail list();
+    Gmail gmail();
 
-    String[] lanuages();
-    int[] pageSize();
+    void update(Gmail gmails);
+
+    String[] getlanuagesList();
+
+    Integer[] getpageSizeList();
 }
