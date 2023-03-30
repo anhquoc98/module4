@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>
+  <a th:href="@{/product}">
+    Back to customer list
+  </a>
+</p>
+<label th:text="${product.getColor()}"></label>
+<label th:text="${product.getNameProduct()}">id</label>
+<label th:text="${product.getPrice()}">id</label>
+<label th:text="${product.getCompany()}">id</label>
+<!--  <input type="hidden" class="form-control" th:field="*{id}"/></div>-->
+<!--<div>-->
+<!--  <label >name product</label>-->
+<!--  <input type="hidden"  class="form-control" th:field="*{nameProduct}" />-->
+<!--</div>-->
+<!--<div>-->
+<!--  <label for="price">price</label>-->
+<!--  <input type="hidden" id="price" class="form-control" th:field="*{price}">-->
+<!--</div>-->
+<!--<div>-->
+<!--  <label for="color">Color</label>-->
+<!--  <input type="hidden" id="color" class="form-control" th:field="*{color}">-->
+<!--</div>-->
+<!--<div>-->
+<!--  <label for="company">Company</label>-->
+<!--  <input type="hidden" id="company" class="form-control" th:field="*{company}">-->
+<!--</div>-->
+</body>
+</html>
