@@ -2,12 +2,14 @@ package com.example.manager_product.repository.impl;
 
 import com.example.manager_product.model.Product;
 import com.example.manager_product.repository.IProductRepository;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityTransaction;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@Repository
 public class ProductRepository implements IProductRepository {
 
 //    static List<Product> productList = new ArrayList<>();

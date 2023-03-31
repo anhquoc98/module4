@@ -32,21 +32,25 @@ public class ManagerProductController {
         productService.add(product);
         return "redirect:/product";
     }
+
     @GetMapping("/{id}/edit")
     public String edit(@PathVariable int id,Model model){
         model.addAttribute("product",productService.seachById(id));
         return "/edit";
     }
+
     @PostMapping("/{id}/update")
     public String updateProduct(@ModelAttribute Product product) {
         productService.update(product.getId(), product);
         return "redirect:/product";
     }
+
     @GetMapping("/delete")
     public String delete(@RequestParam int deleteId) {
         productService.remove(deleteId);
         return "redirect:/product";
     }
+
     @GetMapping("/{id}/view")
     public String view(@PathVariable int id,Model model){
         model.addAttribute("product",productService.seachById(id));
@@ -59,4 +63,5 @@ public class ManagerProductController {
         model.addAttribute("product",productService.seachByName(name));
         return "/viewList";
     }
+    
 }
