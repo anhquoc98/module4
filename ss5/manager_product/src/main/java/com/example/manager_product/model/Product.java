@@ -10,22 +10,22 @@ public class Product {
     @Column(name = "id")
     private int id;
     @Column(name = "name_product")
-    private String nameProduct;
+    private String name;
     @Column(name = "price")
     private String price;
-    @Column(name = "color")
-    private String color;
+    @Column(name = "description")
+    private String description;
     @Column(name = "company")
     private String company;
 
     public Product() {
     }
 
-    public Product(int id, String nameProduct, String price, String color, String company) {
+    public Product(int id, String name, String price, String description, String company) {
         this.id = id;
-        this.nameProduct = nameProduct;
+        this.name = name;
         this.price = price;
-        this.color = color;
+        this.description = description;
         this.company = company;
     }
 
@@ -37,12 +37,12 @@ public class Product {
         this.id = id;
     }
 
-    public String getNameProduct() {
-        return nameProduct;
+    public String getName() {
+        return name;
     }
 
-    public void setNameProduct(String nameProduct) {
-        this.nameProduct = nameProduct;
+    public void setName(String nameProduct) {
+        this.name = nameProduct;
     }
 
     public String getPrice() {
@@ -53,12 +53,12 @@ public class Product {
         this.price = price;
     }
 
-    public String getColor() {
-        return color;
+    public String getDescription() {
+        return description;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setDescription(String color) {
+        this.description = color;
     }
 
     public String getCompany() {

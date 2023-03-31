@@ -30,19 +30,19 @@
             <td>Id</td>
             <td>Name Product</td>
             <td>Price</td>
-            <td>Color</td>
+            <td>Description</td>
             <td>Company</td>
             <td>Function</td>
         </tr>
         <tr th:each="product,rowStat: ${listProduct}">
             <td th:text="${product.id}"></td>
-            <td th:text="${product.nameProduct}"></td>
+            <td th:text="${product.name}"></td>
             <td th:text="${product.price}"></td>
-            <td th:text="${product.color}"></td>
+            <td th:text="${product.description}"></td>
             <td th:text="${product.company}"></td>
             <td>
                 <a th:href="@{/product/{id}/edit(id=${product.getId()})}" class="btn btn-secondary">Update</a>
-                <button type="button" th:attr="onclick=|deleteInfo('${product.id}','${product.nameProduct}')|"
+                <button type="button" th:attr="onclick=|deleteInfo('${product.id}','${product.name}')|"
                         class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Delete
                 </button>
@@ -63,7 +63,7 @@
                         <label for="deleteId"></label><input type="text" hidden id="deleteId" name="deleteId"
                                                              value="${product.id}">
                         Do you want to delete <span id="deleteName"
-                                                    style="color: brown; font-weight: bold">${product.nameProduct}</span>
+                                                    style="color: brown; font-weight: bold">${product.name}</span>
                         ?
                     </div>
                     <div class="modal-footer">

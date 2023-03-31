@@ -43,7 +43,7 @@ public class ProductRepository implements IProductRepository {
     @Override
     public List<Product> seachByName(String name) {
         List<Product> productList = BaseRepository.entityManager
-                .createQuery("select s from Product s where nameProduct =:name", Product.class)
+                .createQuery("select s from Product s where name =:name", Product.class)
                 .setParameter("name", name).getResultList();
         return productList;
     }

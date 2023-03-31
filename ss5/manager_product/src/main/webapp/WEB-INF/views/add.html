@@ -15,15 +15,15 @@
     <form th:action="@{add}" th:object="${product}" method="post" novalidate="novalidate">
         <div class="mb-3">
             <label for="nameProduct">Name product</label>
-            <input type="text" id="nameProduct" class="form-control" th:field="*{nameProduct}"/>
+            <input type="text" id="nameProduct" class="form-control" th:field="*{name}"/>
         </div>
         <div class="mb-3">
             <label for="price">Price</label>
             <input type="text" id="price" class="form-control" th:field="*{price}">
         </div>
         <div class="mb-3">
-            <label for="color">Color</label>
-            <input type="text" id="color" class="form-control" th:field="*{color}">
+            <label for="color">Description</label>
+            <input type="text" id="color" class="form-control" th:field="*{description}">
         </div>
         <div class="mb-3">
             <label for="company">Company</label>
