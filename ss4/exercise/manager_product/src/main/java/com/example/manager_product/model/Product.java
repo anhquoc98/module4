@@ -2,19 +2,19 @@ package com.example.manager_product.model;
 
 public class Product {
     private int id;
-    private String nameProduct;
+    private String name;
     private String price;
-    private String color;
+    private String description;
     private String company;
 
     public Product() {
     }
 
-    public Product(int id, String nameProduct, String price, String color, String company) {
+    public Product(int id, String name, String price, String description, String company) {
         this.id = id;
-        this.nameProduct = nameProduct;
+        this.name = name;
         this.price = price;
-        this.color = color;
+        this.description = description;
         this.company = company;
     }
 
@@ -26,12 +26,12 @@ public class Product {
         this.id = id;
     }
 
-    public String getNameProduct() {
-        return nameProduct;
+    public String getName() {
+        return name;
     }
 
-    public void setNameProduct(String nameProduct) {
-        this.nameProduct = nameProduct;
+    public void setNameProduct(String name) {
+        this.name = name;
     }
 
     public String getPrice() {
@@ -42,12 +42,12 @@ public class Product {
         this.price = price;
     }
 
-    public String getColor() {
-        return color;
+    public String getDescription() {
+        return description;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getCompany() {

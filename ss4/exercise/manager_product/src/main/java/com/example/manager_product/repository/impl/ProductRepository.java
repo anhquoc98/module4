@@ -2,10 +2,11 @@ package com.example.manager_product.repository.impl;
 
 import com.example.manager_product.model.Product;
 import com.example.manager_product.repository.IProductRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Repository
 public class ProductRepository implements IProductRepository {
 
     static List<Product> productList = new ArrayList<>();
@@ -25,7 +26,7 @@ public class ProductRepository implements IProductRepository {
         }
         List<Product> products = new ArrayList<>();
         for (Product product : productList) {
-            if (product.getNameProduct().contains(name)) {
+            if (product.getName().contains(name)) {
                 products.add(product);
             }
         }

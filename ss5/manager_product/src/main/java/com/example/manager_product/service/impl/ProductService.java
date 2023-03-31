@@ -3,24 +3,22 @@ package com.example.manager_product.service.impl;
 import com.example.manager_product.model.Product;
 import com.example.manager_product.repository.impl.ProductRepository;
 import com.example.manager_product.service.IProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class ProductService implements IProductService {
-    @Autowired
-    private ProductRepository productRepository ;
+    private ProductRepository productRepository = new ProductRepository();
 
     @Override
-    public List<Product> list(String name) {
-        return productRepository.list(name);
+    public List<Product> list() {
+        return productRepository.list();
     }
 
     @Override
-    public Object add(Product product) {
-        return productRepository.add(product);
+    public void add(Product product) {
+        productRepository.add(product);
     }
 
     @Override
@@ -29,8 +27,8 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public Product seachByName(String name) {
-        return null;
+    public List<Product> seachByName(String name) {
+        return productRepository.seachByName(name);
     }
 
     @Override
@@ -44,4 +42,3 @@ public class ProductService implements IProductService {
         productRepository.remove(id);
     }
 }
-
