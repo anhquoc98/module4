@@ -19,8 +19,17 @@ public class ProductRepository implements IProductRepository {
     }
 
     @Override
-    public List<Product> list() {
-        return productList;
+    public List<Product> list(String name) {
+        if (name == null) {
+            return productList;
+        }
+        List<Product> products = new ArrayList<>();
+        for (Product product : productList) {
+            if (product.getNameProduct().contains(name)) {
+                products.add(product);
+            }
+        }
+        return products;
     }
 
     @Override
@@ -30,7 +39,7 @@ public class ProductRepository implements IProductRepository {
 
     @Override
     public Product seachById(int id) {
-        return productList.get(id);
+        return productList.get(id - 1);
     }
 
     @Override

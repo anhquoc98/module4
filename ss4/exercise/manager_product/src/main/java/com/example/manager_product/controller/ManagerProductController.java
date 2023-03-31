@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/product")
@@ -15,8 +14,9 @@ public class ManagerProductController {
     private ProductService productService;
 
     @GetMapping("")
-    public String showPage(Model model) {
-        model.addAttribute("listProduct", productService.list());
+    public String showPage(@RequestParam (required = false) String name, Model model) {
+        model.addAttribute("name",name);
+        model.addAttribute("listProduct", productService.list(name));
         return "/list";
     }
 
@@ -38,12 +38,12 @@ public class ManagerProductController {
     }
     @PostMapping("/{id}/update")
     public String updateProduct(@ModelAttribute Product product) {
-        productService.update(product.getId(), product);
+        productService.update(product.getId() - 1, product);
         return "redirect:/product";
     }
-    @GetMapping("/{id}/delete")
-    public String delete(@PathVariable int id) {
-        productService.remove(id);
+    @GetMapping("/delete")
+    public String delete(@RequestParam int deleteId) {
+        productService.remove(deleteId -1);
         return "redirect:/product";
     }
     @GetMapping("/{id}/view")
