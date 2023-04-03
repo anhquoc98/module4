@@ -42,10 +42,23 @@ public class BlogManagerController {
         return "redirect:/blog";
     }
 
-    @GetMapping("delete/")
+    @GetMapping("/delete")
     public String delete(@RequestParam(required = false) Integer deleteId) {
         personalBlogService.delete(deleteId);
-        return  "redirect:/blog";
+        return "redirect:/blog";
     }
 
+    @GetMapping("/update/{id}")
+    public String showUpdate(@PathVariable int id, Model model) {
+        model.addAttribute("personalBlog", personalBlogService.seachById(id));
+        model.addAttribute("typeBlog", typeBlogService.list());
+        return "update";
+    }
+
+    @GetMapping("/view/{id}")
+    public String showView(@PathVariable int id, Model model) {
+        model.addAttribute("personalBlog", personalBlogService.seachById(id));
+        model.addAttribute("typeBlog", typeBlogService.list());
+        return "/view";
+    }
 }

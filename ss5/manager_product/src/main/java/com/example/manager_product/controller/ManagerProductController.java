@@ -57,10 +57,4 @@ public class ManagerProductController {
         return "/view";
     }
 
-    @PostMapping("")
-    public String seachByName(@RequestParam(required = false) String name, Model model) {
-        model.addAttribute("name", name);
-        model.addAttribute("product", productService.seachByName(name));
-        return "/list";
-    }
 }

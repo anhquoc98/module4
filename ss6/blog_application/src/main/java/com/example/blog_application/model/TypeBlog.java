@@ -8,7 +8,7 @@ public class TypeBlog {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idType;
-    @Column(name = "type",columnDefinition = "varchar(50)",nullable = false)
+    @Column(name = "type", columnDefinition = "varchar(50)", nullable = false)
     private String type;
 
     public TypeBlog(int idType, String type) {
