@@ -6,9 +6,14 @@ import java.util.List;
 
 public interface IProductService {
     List<Product> list(String name);
+
     Object add(Product product);
+
     Product seachById(int id);
+
     Product seachByName(String name);
-    void update(int id,Product product);
+
+    void update(int id, Product product);
+
     void remove(int id);
 }

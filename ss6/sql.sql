@@ -1,0 +1,1 @@
+SELECT * FROM blog.presonal_blog;
