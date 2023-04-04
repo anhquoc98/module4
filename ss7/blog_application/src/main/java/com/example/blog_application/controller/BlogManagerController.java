@@ -13,8 +13,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.Optional;
-
 @Controller
 @RequestMapping("/blog")
 public class BlogManagerController {
@@ -24,13 +22,6 @@ public class BlogManagerController {
     @Autowired
     private TypeBlogService typeBlogService;
 
-    //    public ModelAndView listCustomers(@RequestParam("search") Optional<String> search, Pageable pageable){
-//        Page<Customer> customers;
-//        if(search.isPresent()){
-//            customers = customerService.findAllByFirstNameContaining(search.get(), pageable);
-//        } else {
-//            customers = customerService.findAll(pageable);
-//        }
     @GetMapping("")
     public String showList(Model model, @RequestParam(defaultValue = "0") int page,
                            @RequestParam(required = false, defaultValue = "") String name) {

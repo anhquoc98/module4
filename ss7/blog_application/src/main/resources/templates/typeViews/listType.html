@@ -22,15 +22,15 @@
 <div class="container" style="margin-top: 20px">
     <h2 style="text-align: center">Blog list</h2>
     <div class="mb-3">
-        <a th:href="@{blog/create}" class="btn btn-secondary" style="margin-bottom: 5px">Create new blog</a>
+        <a th:href="@{type/create-type}" class="btn btn-secondary" style="margin-bottom: 5px">Create new blog</a>
     </div>
 
 
     <div class="mb-3">
-        <a th:href="@{type}" class="btn btn-secondary" style="margin-bottom: 5px">List Type new blog</a>
+        <a th:href="@{blog}" class="btn btn-secondary" style="margin-bottom: 5px">List Blog</a>
     </div>
 
-    <form action="/blog" method="get">
+    <form action="/type" method="get">
         <div class="form-group float-start w-30">
             <input type="text"
                    class="form-control" name="name" aria-describedby="helpId" th:value="${name}"
@@ -44,41 +44,29 @@
     <table class="table table-striped" style="margin-top: 20px">
         <tr>
             <td>Id</td>
-            <td>Name</td>
-            <td>Title</td>
-            <td>Content</td>
-            <td>Date Time</td>
-            <td>Type Blog</td>
+            <td>type</td>
+
         </tr>
-        <tr th:each="blog,rowStat: ${blog}">
-            <td th:text="${blog.id}"></td>
-            <td th:text="${blog.name}"></td>
-            <td th:text="${blog.title}"></td>
-            <td th:text="${blog.content}"></td>
-            <td th:text="${blog.dateTime}"></td>
-            <td th:text="${blog.typeBlog.type}"></td>
+        <tr th:each="typeBlog,rowStat: ${typeBlog}">
+            <td th:text="${typeBlog.idType}"></td>
+            <td th:text="${typeBlog.type}"></td>
             <td style="width: 40%">
-                <a th:href="@{blog/update/{id}(id=${blog.getId()})}" class="btn btn-secondary">Update</a>
-                <button type="button" th:attr="onclick=|deleteInfo('${blog.id}','${blog.name}')|"
+                <a th:href="@{/type/update/{id}(id=${typeBlog.getIdType()})}" class="btn btn-secondary">Update</a>
+                <button type="button" th:attr="onclick=|deleteInfo('${typeBlog.idType}','${typeBlog.type}')|"
                         class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Delete
                 </button>
-                <a th:href="@{/blog/view/{id}(id=${blog.getId()})}" class="btn btn-secondary">View</a>
             </td>
         </tr>
     </table>
-    <div>
-        <a th:href="@{'/blog'(page=${blog.number - 1})}" th:if="${blog.hasPrevious()}">Previous</a>
-        <span th:text="${blog.number + 1}"></span>/<span th:text="${blog.totalPages}"></span>
-        <a th:href="@{'/blog'(page=${blog.number + 1})}" th:if="${blog.hasNext()}">Next</a>
-    </div>
 
-    <!--    <span>-->
-    <!--        <a th:if="${blog.hasPrevious()}" th:href="@{/blog(page=${blog.number-1})}">after</a>-->
-    <!--    </span>-->
-    <!--    <span>-->
-    <!--        <a th:if="${blog.hasNext()}" th:href="@{/blog(page=${blog.number+1})}">later</a>-->
-    <!--    </span>-->
+
+        <span>
+            <a th:if="${typeBlog.hasPrevious()}" th:href="@{/typeBlog(page=${typeBlog.number-1})}">after</a>
+        </span>
+        <span>
+            <a th:if="${typeBlog.hasNext()}" th:href="@{/typeBlog(page=${typeBlog.number+1})}">later</a>
+        </span>
 
     <!--  Modal xóa  <%-->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -88,12 +76,12 @@
                     <h5 class="modal-title" id="exampleModalLabel">Delete blog</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="/blog/delete">
+                <form action="/type/delete">
                     <div class="modal-body">
                         <label for="deleteId"></label><input type="text" hidden id="deleteId" name="deleteId"
-                                                             value="${blog.id}">
+                                                             value="${typeBlog.idType}">
                         Do you want to delete <span id="deleteName"
-                                                    style="color: brown; font-weight: bold">${blog.name}</span>
+                                                    style="color: brown; font-weight: bold">${typeBlog.type}</span>
                         ?
                     </div>
                     <div class="modal-footer">

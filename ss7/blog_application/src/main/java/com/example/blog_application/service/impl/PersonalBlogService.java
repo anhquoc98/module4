@@ -39,7 +39,6 @@ public class PersonalBlogService implements IPersonalBlogService {
     @Override
     public void delete(Integer id) {
         personalBlogRepository.deleteById(id);
-
     }
 
     @Override
