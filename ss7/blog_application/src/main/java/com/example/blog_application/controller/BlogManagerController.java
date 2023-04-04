@@ -5,11 +5,15 @@ import com.example.blog_application.service.IPersonalBlogService;
 
 import com.example.blog_application.service.impl.TypeBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/blog")
@@ -20,9 +24,18 @@ public class BlogManagerController {
     @Autowired
     private TypeBlogService typeBlogService;
 
+    //    public ModelAndView listCustomers(@RequestParam("search") Optional<String> search, Pageable pageable){
+//        Page<Customer> customers;
+//        if(search.isPresent()){
+//            customers = customerService.findAllByFirstNameContaining(search.get(), pageable);
+//        } else {
+//            customers = customerService.findAll(pageable);
+//        }
     @GetMapping("")
-    public String showList(Model model) {
-        model.addAttribute("blog", personalBlogService.list());
+    public String showList(Model model, @RequestParam(defaultValue = "0") int page,
+                           @RequestParam(required = false, defaultValue = "") String name) {
+        Sort sort = Sort.by("dateTime").descending();
+        model.addAttribute("blog", personalBlogService.seachByName(name, PageRequest.of(page, 3, sort)));
         return "list";
     }
 
@@ -52,7 +65,15 @@ public class BlogManagerController {
     public String showUpdate(@PathVariable int id, Model model) {
         model.addAttribute("personalBlog", personalBlogService.seachById(id));
         model.addAttribute("typeBlog", typeBlogService.list());
-        return "update";
+        return "/update";
+    }
+
+    @PostMapping("/update")
+    public String update(PersonalBlog personalBlog,
+                         RedirectAttributes redirect) {
+        personalBlogService.update(personalBlog);
+        redirect.addAttribute("msg", "update thành công");
+        return "redirect:/blog";
     }
 
     @GetMapping("/view/{id}")
@@ -61,4 +82,5 @@ public class BlogManagerController {
         model.addAttribute("typeBlog", typeBlogService.list());
         return "/view";
     }
+
 }

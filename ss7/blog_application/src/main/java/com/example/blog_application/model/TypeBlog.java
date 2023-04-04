@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class TypeBlog {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_type")
     private int idType;
     @Column(name = "type", columnDefinition = "varchar(50)", nullable = false)
     private String type;

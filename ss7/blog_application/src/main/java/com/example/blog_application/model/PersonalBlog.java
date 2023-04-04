@@ -10,12 +10,14 @@ public class PersonalBlog {
     private int id;
     @Column(name = "name", columnDefinition = "varchar(50)", nullable = false)
     private String name;
+    @Column(name = "date", columnDefinition = "datetime", nullable = false)
+    private String dateTime;
     @Column(name = "title", columnDefinition = "varchar(50)")
     private String title;
     @Column(name = "contest", columnDefinition = "varchar(255)")
     private String content;
     @ManyToOne
-    @JoinColumn(name = "type_blog")
+    @JoinColumn(name = "id_type")
     private TypeBlog typeBlog;
 
     public PersonalBlog() {
@@ -29,9 +31,11 @@ public class PersonalBlog {
         this.typeBlog = typeBlog;
     }
 
-    public PersonalBlog(int id, String name, String title, String content) {
+
+    public PersonalBlog(int id, String name, String dateTime, String title, String content) {
         this.id = id;
         this.name = name;
+        this.dateTime = dateTime;
         this.title = title;
         this.content = content;
     }
@@ -50,6 +54,14 @@ public class PersonalBlog {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
     }
 
     public String getTitle() {

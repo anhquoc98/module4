@@ -12,14 +12,13 @@
     <a th:href="@{/blog}" class="btn btn-secondary" style="margin-bottom: 10px">
         Back to blog list
     </a>
-    <form action="/blog/create" th:object="${personalBlog}" method="post" novalidate="novalidate">
+    <form action="/blog/update" th:object="${personalBlog}" method="post" novalidate="novalidate">
         <div class="mb-3">
-            <label>ID </label>
-            <input type="hidden" class="form-control" th:text="*{id}"/>
+            <input type="hidden" class="form-control" th:field="*{id}">
         </div>
         <div class="mb-3">
             <label>Name </label>
-            <input type="hidden" class="form-control" th:text="*{name}"/>
+            <input type="text" class="form-control" th:field="*{name}">
         </div>
         <div class="mb-3">
             <label>title</label>
@@ -28,6 +27,10 @@
         <div class="mb-3">
             <label>content</label>
             <input type="text" class="form-control" th:field="*{content}">
+        </div>
+        <div class="mb-3">
+            <label>Date Time</label>
+            <input type="text" class="form-control" th:field="*{dateTime}">
         </div>
         <div class="mb-3">
             <select th:field="*{typeBlog}">

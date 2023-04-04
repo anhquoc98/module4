@@ -14,10 +14,6 @@
     </a>
     <form action="/blog/create" th:object="${personalBlog}" method="post" novalidate="novalidate">
         <div class="mb-3">
-            <label>ID </label>
-            <input type="text" class="form-control" th:field="*{id}"/>
-        </div>
-        <div class="mb-3">
             <label>Name </label>
             <input type="text" class="form-control" th:field="*{name}"/>
         </div>
@@ -28,6 +24,11 @@
         <div class="mb-3">
             <label>content</label>
             <input type="text" class="form-control" th:field="*{content}">
+        </div>
+
+        <div class="mb-3">
+            <label>Date time</label>
+            <input type="text" class="form-control" th:field="*{dateTime}">
         </div>
         <div class="mb-3">
             <select th:field="*{typeBlog}">
