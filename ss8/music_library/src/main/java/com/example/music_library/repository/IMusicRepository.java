@@ -5,5 +5,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IMusicRepository extends PagingAndSortingRepository<Music,Integer> {
+public interface IMusicRepository extends PagingAndSortingRepository<Music, Integer> {
 }

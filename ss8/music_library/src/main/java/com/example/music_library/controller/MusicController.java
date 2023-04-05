@@ -26,20 +26,39 @@ public class MusicController {
 
     @GetMapping("/add")
     public String showAddMusic(Model model) {
-        model.addAttribute("music", new MusicCreateDTO());
+        model.addAttribute("musicCreateDTO", new MusicCreateDTO());
         return "add";
     }
 
     @PostMapping("/add")
     public String addMusic(@Valid @ModelAttribute MusicCreateDTO musicCreateDTO,
-                           BindingResult bindingResult, RedirectAttributes redirectAttributes,Model model){
-        if (bindingResult.hasErrors()){
-            model.addAttribute("music",musicCreateDTO);
+                           BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("musicCreateDTO", musicCreateDTO);
             return "add";
-        }
-        else {
+        } else {
             musicService.create(musicCreateDTO);
-            redirectAttributes.addFlashAttribute("msg","thêm mới thành công");
+            redirectAttributes.addFlashAttribute("msg", "Add new success");
+            return "redirect:/music";
+        }
+    }
+
+    @GetMapping("update/{id}")
+    public String showUpdateMusic(@PathVariable int id, Model model) {
+        model.addAttribute("music", musicService.seachById(id));
+        return "update";
+
+    }
+
+    @PostMapping("/update")
+    public String updateMusic(@Valid @ModelAttribute MusicCreateDTO musicCreateDTO,
+                              BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("music", musicCreateDTO);
+            return "update";
+        } else {
+            musicService.create(musicCreateDTO);
+            redirectAttributes.addFlashAttribute("msg", "Update new success");
             return "redirect:/music";
         }
     }

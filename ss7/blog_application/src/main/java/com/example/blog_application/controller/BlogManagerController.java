@@ -3,7 +3,7 @@ package com.example.blog_application.controller;
 import com.example.blog_application.model.PersonalBlog;
 import com.example.blog_application.service.IPersonalBlogService;
 
-import com.example.blog_application.service.impl.TypeBlogService;
+import com.example.blog_application.service.impl.CategoryBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -20,7 +20,7 @@ public class BlogManagerController {
     private IPersonalBlogService personalBlogService;
 
     @Autowired
-    private TypeBlogService typeBlogService;
+    private CategoryBlogService categoryBlogService;
 
     @GetMapping("")
     public String showList(Model model, @RequestParam(defaultValue = "0") int page,
@@ -33,7 +33,7 @@ public class BlogManagerController {
     @GetMapping("/create")
     public String createShow(Model model) {
         model.addAttribute("personalBlog", new PersonalBlog());
-        model.addAttribute("typeBlog", typeBlogService.list());
+        model.addAttribute("categoryBlog", categoryBlogService.list());
         return "create";
     }
 
@@ -55,7 +55,7 @@ public class BlogManagerController {
     @GetMapping("/update/{id}")
     public String showUpdate(@PathVariable int id, Model model) {
         model.addAttribute("personalBlog", personalBlogService.seachById(id));
-        model.addAttribute("typeBlog", typeBlogService.list());
+        model.addAttribute("category", categoryBlogService.list());
         return "/update";
     }
 
@@ -70,7 +70,7 @@ public class BlogManagerController {
     @GetMapping("/view/{id}")
     public String showView(@PathVariable int id, Model model) {
         model.addAttribute("personalBlog", personalBlogService.seachById(id));
-        model.addAttribute("typeBlog", typeBlogService.list());
+        model.addAttribute("category", categoryBlogService.list());
         return "/view";
     }
 

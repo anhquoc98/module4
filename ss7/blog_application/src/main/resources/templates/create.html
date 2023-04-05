@@ -9,7 +9,7 @@
 <body>
 <div class="container" style="margin-top: 20px;width: 500px">
     <h2 style="text-align: center">Create new product</h2>
-    <a th:href="@{/blog}" class="btn btn-secondary" style="margin-bottom: 10px">
+    <a th:href="@{/blog}" class="btn btn-secondary">
         Back to blog list
     </a>
     <form action="/blog/create" th:object="${personalBlog}" method="post" novalidate="novalidate">
@@ -32,8 +32,8 @@
         </div>
         <div class="mb-3">
             <select th:field="*{typeBlog}">
-                <option th:each="typeBlog1 :${typeBlog}" th:text="${typeBlog1.type}"
-                        th:value="${typeBlog1.idType}"></option>
+                <option th:each="category1 :${categoryBlog}" th:text="${category1.nameCategory}"
+                        th:value="${category1.idCategory}"></option>
             </select>
         </div>
         <div class="mb-3">

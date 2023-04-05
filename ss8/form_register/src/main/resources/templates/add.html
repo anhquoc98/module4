@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport"
@@ -10,43 +10,46 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
+<div class="mb-3">
+    <a th:href="@{/users}" class="btn btn-secondary" style="margin-bottom: 5px">list users</a>
+</div>
 <div>
-<form action="/customer/add" th:object="${customerDtoAdd}" method="post" novalidate="novalidate">
-    <div class="mb-3">
-        <label>id </label>
-        <input type="text" class="form-control" th:field="*{id}">
-    </div>
-    <div class="mb-3">
-        <label>First Name </label>
-        <input type="text" class="form-control" th:field="*{firstName}">
-        <p style="color: red" th:if="${#fields.hasErrors('firstName')}"th:errors="*{firstName}"></p>
-    </div>
-    <div class="mb-3">
-        <label>Last Name </label>
-        <input type="text" class="form-control" th:field="*{lastName}">
-    </div>
-    <div class="mb-3">
-        <label>Phone </label>
-        <input type="text" class="form-control" th:field="*{phone}">
-        <p style="color: red" th:if="${#fields.hasErrors('phone')}"th:errors="*{phone}"></p>
-    </div>
-    <div class="mb-3">
-        <label>Age </label>
-        <input type="text" class="form-control" th:field="*{age}">
-        <p style="color: red" th:if="${#fields.hasErrors('age')}"th:errors="*{age}"></p>
+    <form action="/users/add" th:object="${usersDtoAdd}" method="post" novalidate="novalidate">
+        <div class="mb-3">
+            <label>id </label>
+            <input type="text" class="form-control" th:field="*{id}">
+        </div>
+        <div class="mb-3">
+            <label>First Name </label>
+            <input type="text" class="form-control" th:field="*{firstName}">
+            <p style="color: red" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
+        </div>
+        <div class="mb-3">
+            <label>Last Name </label>
+            <input type="text" class="form-control" th:field="*{lastName}">
+        </div>
+        <div class="mb-3">
+            <label>Phone </label>
+            <input type="text" class="form-control" th:field="*{phone}">
+            <p style="color: red" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
+        </div>
+        <div class="mb-3">
+            <label>Age </label>
+            <input type="text" class="form-control" th:field="*{age}">
+            <p style="color: red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></p>
 
-    </div>
-    <div class="mb-3">
-        <label>Email</label>
-        <input type="text" class="form-control" th:field="*{email}">
-        <p style="color: red" th:if="${#fields.hasErrors('email')}"th:errors="*{email}"></p>
+        </div>
+        <div class="mb-3">
+            <label>Email</label>
+            <input type="text" class="form-control" th:field="*{email}">
+            <p style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
 
-    </div>
-    <div class="mb-3">
-        <button type="submit" class="btn btn-primary">Create</button>
-        <input type="reset" class="btn btn-secondary" value="Cancel"/>
-    </div>
-</form>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Create</button>
+            <input type="reset" class="btn btn-secondary" value="Cancel"/>
+        </div>
+    </form>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

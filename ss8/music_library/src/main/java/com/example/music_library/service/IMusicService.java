@@ -7,5 +7,8 @@ import org.springframework.data.domain.PageRequest;
 
 public interface IMusicService {
     Page<Music> list(PageRequest pageRequest);
+
     void create(MusicCreateDTO musicCreateDTO);
+
+    Music seachById(int id);
 }

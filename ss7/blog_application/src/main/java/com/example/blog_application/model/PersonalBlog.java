@@ -18,17 +18,17 @@ public class PersonalBlog {
     private String content;
     @ManyToOne
     @JoinColumn(name = "id_type")
-    private TypeBlog typeBlog;
+    private CategoryBlog categoryBlog;
 
     public PersonalBlog() {
     }
 
-    public TypeBlog getTypeBlog() {
-        return typeBlog;
+    public CategoryBlog getTypeBlog() {
+        return categoryBlog;
     }
 
-    public void setTypeBlog(TypeBlog typeBlog) {
-        this.typeBlog = typeBlog;
+    public void setTypeBlog(CategoryBlog categoryBlog) {
+        this.categoryBlog = categoryBlog;
     }
 
 

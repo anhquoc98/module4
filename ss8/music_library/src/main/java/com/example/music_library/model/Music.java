@@ -10,9 +10,9 @@ public class Music {
     private int id;
     @Column(name = "name_music")
     private String nameMusic;
-   @Column(name = "name_singer")
+    @Column(name = "name_singer")
     private String nameSinger;
-   @Column(name = "kind_of_music")
+    @Column(name = "kind_of_music")
     private String kindOfMusic;
 
     public Music(int id, String nameMusic, String nameSinger, String kindOfMusic) {

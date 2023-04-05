@@ -10,7 +10,9 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
-<form method="post" action="/music/add" novalidate="novalidate" th:object="${music}">
+<a th:href="@{/music}" class="btn btn-secondary" style="margin-bottom: 10px">
+    Back to blog list
+</a><form method="post" action="/music/add" novalidate="novalidate" th:object="${musicCreateDTO}">
     <div class="mb-3">
         <label>id </label>
         <input type="hidden" class="form-control" th:field="*{id}"/>
@@ -18,20 +20,19 @@
     <div class="mb-3">
         <label>Name Music</label>
         <input type="text" class="form-control" th:field="*{nameMusic}">
-        <p style="color: red" th:if="${#fields.hasErrors('nameMusic')}"th:errors="*{nameMusic}"></p>
+        <p style="color: red" th:if="${#fields.hasErrors('nameMusic')}" th:errors="*{nameMusic}"></p>
 
     </div>
     <div class="mb-3">
         <label>Name Singer</label>
         <input type="text" class="form-control" th:field="*{nameSinger}">
-        <p style="color: red" th:if="${#fields.hasErrors('nameSinger')}"th:errors="*{nameSinger}"></p>
-
+        <p style="color: red" th:if="${#fields.hasErrors('nameSinger')}" th:errors="*{nameSinger}"></p>
     </div>
 
     <div class="mb-3">
         <label>Kind Of Music time</label>
         <input type="text" class="form-control" th:field="*{kindOfMusic}">
-        <p style="color: red" th:if="${#fields.hasErrors('kindOfMusic')}"th:errors="*{kindOfMusic}"></p>
+        <p style="color: red" th:if="${#fields.hasErrors('kindOfMusic')}" th:errors="*{kindOfMusic}"></p>
 
     </div>
     <div class="mb-3">

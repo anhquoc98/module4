@@ -10,8 +10,9 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
-<a th:href="@{/customer/add}">add
-</a>
+<div class="mb-3">
+    <a th:href="@{/users/add}" class="btn btn-secondary" style="margin-bottom: 5px">list users</a>
+</div>
 <table class="table table-striped" style="margin-top: 20px">
     <tr>
         <td>Id</td>
@@ -22,13 +23,13 @@
         <td>Email</td>
 
     </tr>
-    <tr th:each="customer,rowStat: ${customerModel}">
-        <td th:text="${customer.id}"></td>
-        <td th:text="${customer.firstName}"></td>
-        <td th:text="${customer.lastName}"></td>
-        <td th:text="${customer.phone}"></td>
-        <td th:text="${customer.age}"></td>
-        <td th:text="${customer.email}"></td>
+    <tr th:each="users,rowStat: ${usersModel}">
+        <td th:text="${users.id}"></td>
+        <td th:text="${users.firstName}"></td>
+        <td th:text="${users.lastName}"></td>
+        <td th:text="${users.phone}"></td>
+        <td th:text="${users.age}"></td>
+        <td th:text="${users.email}"></td>
     </tr>
 
 </table>
