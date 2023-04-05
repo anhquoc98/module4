@@ -10,6 +10,7 @@ import java.util.List;
 
 public interface ITypeBlogService {
     List<TypeBlog> list();
+
     Page<TypeBlog> list(String name, PageRequest pageRequest);
 
     void add(TypeBlog typeBlog);

@@ -43,11 +43,11 @@ public class TypeBlogService implements ITypeBlogService {
     }
 
     public TypeBlog seachById(Integer id) {
-       return blogRepository.findById(id).get();
+        return blogRepository.findById(id).get();
     }
 
     @Override
     public Page<TypeBlog> seachByName(String name, PageRequest pageRequest) {
-        return blogRepository.findByTypeContaining(name,pageRequest);
+        return blogRepository.findByTypeContaining(name, pageRequest);
     }
 }

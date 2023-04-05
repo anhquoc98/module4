@@ -20,10 +20,6 @@ public class TypeManagerController {
     ITypeBlogService typeBlogService;
 
     @GetMapping("")
-//    public String showListType(Model model) {
-//        model.addAttribute("typeBlog", typeBlogService.list());
-//        return "/typeViews/listType";
-//    }
     public String showList(Model model, @RequestParam(defaultValue = "0") int page,
                            @RequestParam(required = false, defaultValue = "") String name) {
         Sort sort = Sort.by("type").descending();
