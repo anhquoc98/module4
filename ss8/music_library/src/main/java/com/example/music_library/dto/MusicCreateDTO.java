@@ -8,15 +8,15 @@ public class MusicCreateDTO {
     private int id;
     @NotBlank(message = "Input characters")
     @Size(min = 1, max = 800, message = "No input characters")
-    @Pattern(regexp = "^((?=[A-Za-z0-9])(?![_\\\\-]).)*$", message = "Không chứa các kí tự đặc biệt")
+    @Pattern(regexp = "^[A-Za-z0-9 ]+$", message = "Không chứa các kí tự đặc biệt")
     private String nameMusic;
     @NotBlank(message = "Input characters")
     @Size(min = 1, max = 800, message = "No input characters")
-    @Pattern(regexp = "^((?=[A-Za-z0-9])(?![_\\\\-]).)*$", message = "Không chứa các kí tự đặc biệt")
+    @Pattern(regexp = "^[A-Za-z0-9 ]+$", message = "Không chứa các kí tự đặc biệt")
     private String nameSinger;
     @NotBlank(message = "Input characters")
     @Size(min = 1, max = 800, message = "No input characters")
-    @Pattern(regexp = "^((?=[A-Za-z0-9,])(?![_\\\\-]).)*$", message = "Không chứa các kí tự đặc biệt")
+    @Pattern(regexp = "^[A-Za-z0-9 ]+$", message = "Không chứa các kí tự đặc biệt")
     private String kindOfMusic;
 
     public MusicCreateDTO(int id, String nameMusic, String nameSinger, String kindOfMusic) {
