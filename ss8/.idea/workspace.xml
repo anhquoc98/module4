@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="2ed563e6-3853-49f4-90fb-7a2f72e1aab6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/music_library/src/main/java/com/example/music_library/dto/MusicCreateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/music_library/src/main/java/com/example/music_library/dto/MusicCreateDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +26,10 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "D:/codegym/module4/ss8",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -36,6 +43,7 @@
       <updated>1680696552617</updated>
       <workItem from="1680696553704" duration="14000" />
       <workItem from="1680771552559" duration="11000" />
+      <workItem from="1680772646192" duration="384000" />
     </task>
     <servers />
   </component>

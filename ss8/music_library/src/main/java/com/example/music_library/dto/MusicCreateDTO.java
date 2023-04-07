@@ -6,16 +6,19 @@ import javax.validation.constraints.Size;
 
 public class MusicCreateDTO {
     private int id;
+
     @NotBlank(message = "Input characters")
     @Size(min = 1, max = 800, message = "No input characters")
     @Pattern(regexp = "^[A-Za-z0-9 ]+$", message = "Không chứa các kí tự đặc biệt")
     private String nameMusic;
+
     @NotBlank(message = "Input characters")
-    @Size(min = 1, max = 800, message = "No input characters")
+    @Size(min = 1, max = 300, message = "No input characters")
     @Pattern(regexp = "^[A-Za-z0-9 ]+$", message = "Không chứa các kí tự đặc biệt")
     private String nameSinger;
+
     @NotBlank(message = "Input characters")
-    @Size(min = 1, max = 800, message = "No input characters")
+    @Size(min = 1, max = 1000, message = "No input characters")
     @Pattern(regexp = "^[A-Za-z0-9 ]+$", message = "Không chứa các kí tự đặc biệt")
     private String kindOfMusic;
 

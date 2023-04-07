@@ -6,15 +6,19 @@ import javax.validation.constraints.*;
 @Valid
 public class UsersDtoAdd {
     private int id;
+
     @NotEmpty(message = "No Input")
-    @Size(min = 5, max = 50, message = "min character =5")
+    @Size(min = 5, max = 45, message = "min character =5")
     private String firstName;
+
+    @Size(min = 5, max = 45, message = "min character =5")
     @NotNull(message = "No Input")
     private String lastName;
+
     @Size(min = 10, max = 11, message = "No Input")
     private String phone;
 
-    @Min(value =18,message = "age >= 18")
+    @Min(value = 18, message = "age >= 18")
     private int age;
 
     @Email
