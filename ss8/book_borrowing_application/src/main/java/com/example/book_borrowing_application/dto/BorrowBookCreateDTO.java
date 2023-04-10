@@ -19,6 +19,7 @@ public class BorrowBookCreateDTO {
 
     @NotNull(message = "input price")
     private int price;
+    private String borrowCode;
 
     public BorrowBookCreateDTO() {
     }
@@ -69,5 +70,18 @@ public class BorrowBookCreateDTO {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String borrow() {
+
+        this.quantity = quantity - 1;
+        this.borrowCode = (int) Math.floor(Math.random() * (99999 - 10000 + 1) + 10000) + "";
+        return this.borrowCode;
+    }
+
+    public void giveBack (String borrowCode)  {
+        if (this.borrowCode.equals(borrowCode)) {
+            this.quantity = quantity + 1;
+        }
     }
 }

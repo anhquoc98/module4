@@ -27,13 +27,13 @@
         <td th:text="${book.price}"></td>
         <td>
 
-            <a th:href="@{/book/borrow(id = ${book.id})}" class="btn btn-primary">Mượn</a>
+            <a th:href="@{/book/borrow(id = ${borrowBookCreateDTO.id})}" class="btn btn-primary">Mượn</a>
             <p>Mã mượn sách: </p>
-            <span th:text="${book.borrowCode}"></span>
+            <span th:text="${borrowBookCreateDTO.borrowCode}"></span>
         </td>
         <td>
             <form action="/book/giveBack">
-                <input type="hidden" name="id" th:value="${book.id}">
+                <input type="hidden" name="id" th:value="${borrowBookCreateDTO.id}">
                 <input type="text" placeholder="Mã mượn sách" name="borrowCode">
                 <input type="submit" class="btn btn-primary" value="Trả sách">
             </form>

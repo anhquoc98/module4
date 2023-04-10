@@ -3,6 +3,7 @@ package com.example.book_borrowing_application.controller;
 import com.example.book_borrowing_application.dto.BorrowBookCreateDTO;
 import com.example.book_borrowing_application.model.BorrowBookModel;
 import com.example.book_borrowing_application.service.impl.BookService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,8 +46,21 @@ public class ManagerBorrowController {
     }
 
     @GetMapping("/borrow")
-    public String performBorrow (@RequestParam Integer id) {
-        BorrowBookModel bookDTO = bookService.findById(id); 
+    public String performBorrow (@RequestParam Integer id,Model model) {
+        BorrowBookCreateDTO bookDTO = bookService.findById(id);
+        bookDTO.borrow();
+        bookService.update(bookDTO);
+        model.addAttribute("borrowBookCreateDTO",bookDTO);
+        return "redirect:/book";
+    }
+
+    @GetMapping("/giveBack")
+    public String performGiveBack (@RequestParam String borrowCode, int id,
+                                   RedirectAttributes redirectAttributes,Model model)  {
+        BorrowBookCreateDTO bookDTO = bookService.findById(id);
+        model.addAttribute("borrowBookCreateDTO", bookDTO);
+        bookDTO.giveBack(borrowCode);
+        bookService.update(bookDTO);
         return "redirect:/book";
     }
 }

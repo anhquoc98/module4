@@ -23,14 +23,14 @@ public class LoggingAspect {
 
     @AfterReturning(pointcut = "loggingPerformBorrowPointCut()")
     public void handleAfterReturningPerformBorrow(JoinPoint joinPoint) {
-        BorrowBookModel borrowBookCreateDTO = ((ManagerBorrowController) joinPoint.getTarget())
+        BorrowBookModel borrowBookCreateDTO = (BorrowBookModel) ((ManagerBorrowController) joinPoint.getTarget())
                 .bookService.findById((Integer) joinPoint.getArgs()[0]);
         System.out.println("Sách" + borrowBookCreateDTO.getNameBook() + "đã mượn 1 ,còn lại:" + borrowBookCreateDTO.getQuantity() + "quyển sách");
     }
 
     @AfterReturning(pointcut = "loggingPerformGiveBackPointCut()")
     public void handleAfterReturningPerformGiveBack(JoinPoint joinPoint) {
-        BorrowBookModel bookDTO = ((ManagerBorrowController) joinPoint.getTarget())
+        BorrowBookModel bookDTO = (BorrowBookModel) ((ManagerBorrowController) joinPoint.getTarget())
                 .bookService.findById((Integer) joinPoint.getArgs()[1]);
         System.out.println("Sach " + bookDTO.getNameBook() + " da bi tra lai 1, con lai: "
                 + bookDTO.getQuantity() + " quyen sach");

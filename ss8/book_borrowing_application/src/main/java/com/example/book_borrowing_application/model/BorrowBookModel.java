@@ -1,11 +1,13 @@
 package com.example.book_borrowing_application.model;
 
+import com.example.book_borrowing_application.dto.BorrowBookCreateDTO;
+
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 @Entity
 @Table
-public class BorrowBookModel {
+public class BorrowBookModel extends BorrowBookCreateDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_book")
@@ -70,4 +72,6 @@ public class BorrowBookModel {
     public void setPrice(int price) {
         this.price = price;
     }
+
+
 }

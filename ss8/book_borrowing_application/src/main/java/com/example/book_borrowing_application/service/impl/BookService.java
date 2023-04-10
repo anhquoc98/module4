@@ -22,7 +22,7 @@ public class BookService implements IBookService {
     }
 
     @Override
-    public BorrowBookModel findById(int id) {
+    public BorrowBookCreateDTO findById(int id) {
         return bookRepository.findById(id).get();
     }
 

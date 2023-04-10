@@ -8,7 +8,7 @@ import java.util.List;
 public interface IBookService {
     List<BorrowBookModel> list();
 
-    BorrowBookModel findById(int id);
+    BorrowBookCreateDTO findById(int id);
 
     void update(BorrowBookCreateDTO borrowBookCreateDTO);
 }
