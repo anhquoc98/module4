@@ -27,7 +27,7 @@
         <tr th:each="product: ${cart.products}">
             <td th:text="${product.getKey().name}"></td>
             <td>
-                <img th:src="${product.getKey().description}" alt=""  class="img-fluid img-thumbnail">
+                <img th:src="${product.getKey().description}" alt="" class="img-fluid img-thumbnail">
             </td>
             <td>
                 <div>

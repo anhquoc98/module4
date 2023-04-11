@@ -26,4 +26,5 @@ public class ShoppingCartController {
     public String pay() {
         return "pay";
     }
+
 }
