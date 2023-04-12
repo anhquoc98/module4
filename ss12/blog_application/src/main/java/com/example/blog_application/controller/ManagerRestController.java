@@ -15,7 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping("api/blog")
 public class ManagerRestController {
@@ -28,8 +28,9 @@ public class ManagerRestController {
 
     @GetMapping("")
     public Page<PersonalBlog> showlist(@RequestParam(defaultValue = "0") int page,
-                                       @RequestParam(required = false, defaultValue = "") String name) {
+                                       @RequestParam(required = false, defaultValue = "") String name,Model model) {
         Sort sort = Sort.by("dateTime").descending();
+        model.addAttribute("categoryBlog", categoryBlogService.list());
         return personalBlogService.seachByName(name, PageRequest.of(page, 3, sort));
     }
 
