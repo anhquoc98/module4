@@ -15,7 +15,7 @@ import java.util.Optional;
 @SessionAttributes("cart")
 public class ProductController {
     @Autowired
-    IProductService iProductService;
+    private IProductService iProductService;
 
     @ModelAttribute("cart")
     public Cart setupCart() {
@@ -42,6 +42,17 @@ public class ProductController {
         }
         cart.addProduct(productOptional.get());
         return "redirect:/shop";
+    }
+
+    @GetMapping("/decrease/{id}")
+    public String decreaseToCart(@PathVariable Long id,@ModelAttribute Cart cart){
+        Optional<Product> productOptional = iProductService.findById(id);
+        if(!productOptional.isPresent()){
+            return "/error.404";
+        } else {
+            cart.decreaseProduct(productOptional.get());
+            return "redirect:/shopping-cart";
+        }
     }
 
     @GetMapping("/detail/{id}")

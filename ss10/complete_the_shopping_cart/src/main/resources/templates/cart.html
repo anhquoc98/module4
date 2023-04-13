@@ -30,8 +30,10 @@
                 <img th:src="${product.getKey().description}" alt="" class="img-fluid img-thumbnail">
             </td>
             <td>
+                <span th:text="${product.getValue()}"></span>
                 <div>
-                    <a id="decrease_button" th:text="${'-'}"></a>
+                    <a id="decrease_button" th:href="@{/decrease/__${product.getKey().id}__(action='show')}"
+                       th:text="${'-'}"></a>
                 </div>
 
                 <span th:text="${product.getValue()}"></span>

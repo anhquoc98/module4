@@ -1,6 +1,7 @@
 package com.example.complete_the_shopping_cart.model;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table
@@ -48,6 +49,7 @@ public class Product {
         this.description = description;
     }
 
+
     public String getInformation() {
         return information;
     }
@@ -62,5 +64,18 @@ public class Product {
         this.price = price;
         this.description = description;
         this.information = information;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return id.equals(product.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

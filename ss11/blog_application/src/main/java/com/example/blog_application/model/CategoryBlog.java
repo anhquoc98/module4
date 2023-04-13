@@ -1,16 +1,24 @@
 package com.example.blog_application.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "category_blog")
 public class CategoryBlog {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_category")
     private int idCategory;
     @Column(name = "name_category", columnDefinition = "varchar(50)", nullable = false)
     private String nameCategory;
+
+    @OneToMany
+    @JsonBackReference
+    private List<PersonalBlog> blogList;
 
     public CategoryBlog() {
     }

@@ -50,6 +50,19 @@ public class Cart {
         }
     }
 
+    //sử dụng trừ 1 sản phẩm trong giỏi hàng
+    public void decreaseProduct(Product product) {
+        if (!checkItemInCart(product)) {
+            products.put(product, 1);
+        } else if (products.get(product) == 0) {
+            products.remove(product);
+        } else {
+            Map.Entry<Product, Integer> itemEntry = selectItemInCart(product);
+            Integer newQuantity = itemEntry.getValue() - 1;
+            products.replace(itemEntry.getKey(), newQuantity);
+        }
+    }
+
 
 //    để đếm số lượng sản phẩm đó hiện có trong giỏ hàng
 
