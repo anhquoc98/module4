@@ -13,35 +13,30 @@ https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js
 "></script>
 </head>
 <body>
-<form>
+<!--<form>-->
     <div class="mb-3">
         <input type="text" name="title" id="name" placeholder="Search....">
-        <button type="button" onclick="loadBlogs()">Search</button>
+        <button type="button" id="load-name">Search</button>
     </div>
-</form>
-<table class="table table-striped" style="margin-top: 20px">
-    <tr>
+<!--</form>-->
+<table class="table table-striped" style="margin-top: 20px" id="table-blog">
+    <tr class="ok">
         <td>Id</td>
         <td>Name</td>
         <td>Title</td>
         <td>Content</td>
         <td>Date Time</td>
-        <td>Type Blog</td>
     </tr>
-    <tr>
-        <tbody id="blogList">
-        </tbody>
 </table>
-<div id="listBlogs" class="table"></div>
-</div>
-<a href="" class="btn btn-secondary"> Danh sách Blog</a>
+<button id="event"> more</button>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
 </body>
 <script>
-    function load() {
-        debugger
+    let page = 0
+    let name=""
+    $(document).ready(function () {
         $.ajax({
             headers: {
                 'Accept': 'application/json',
@@ -49,64 +44,99 @@ https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js
             },
             type: 'GET',
             url: "http://localhost:8080/api/blog",
-            success: function (data) {
-                debugger
-                let content = '';
-                for (let i = 0; i < data.content.length; i++) {
-                    content += `<tr>
-                        <td>${data.content[i].id}</td>
-                        <td>${data.content[i].name}</td>
-                        <td>${data.content[i].title}</td>
-                        <td>${data.content[i].content}</td>
-                        <td>${data.content[i].dateTime}</td>
-
-                    </tr>`
+            success: function (evt) {
+                let table = document.getElementById("table-blog");
+                let arrBlog = evt.content;
+                for (let i = 0; i < arrBlog.length; i++) {
+                    let row = table.insertRow(i + 1);
+                    let id = row.insertCell(0);
+                    let name = row.insertCell(1);
+                    let title = row.insertCell(2);
+                    let content = row.insertCell(3);
+                    let dateTime = row.insertCell(4);
+                    id.innerHTML = arrBlog[i].id;
+                    name.innerHTML = arrBlog[i].name;
+                    title.innerHTML = arrBlog[i].title;
+                    content.innerHTML = arrBlog[i].content;
+                    dateTime.innerHTML = arrBlog[i].dateTime;
                 }
-                document.getElementById("blogList").innerHTML = content
+                console.log(evt.content)
+            },
+            error: function (evt) {
+                console.log(evt.content)
             }
         })
-    }
-
-    function loadBlogs(page, append) {
+    });
+    $('#event').click(function (event) {
+        page = page + 1
         $.ajax({
-            type: "GET",
-            url: 'http://localhost:8080/blog?name=?',
             headers: {
-                "Content-Type": "application/json",
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             },
-            success: function (data) {
-                load(data.content, append);
-                renderLoadMoreButton(data);
+            type: 'GET',
+            url: "http://localhost:8080/api/blog?page=" + page,
+            success: function (evt) {
+                let table = document.getElementById("table-blog");
+                let arrBlog = evt.content;
+                let tempRow = 2 * page;
+                for (let i = 0; i < arrBlog.length; i++) {
+                    let row = table.insertRow(tempRow + i + 1);
+                    let id = row.insertCell(0);
+                    let name = row.insertCell(1);
+                    let title = row.insertCell(2);
+                    let content = row.insertCell(3);
+                    let dateTime = row.insertCell(4);
+                    id.innerHTML = arrBlog[i].id;
+                    name.innerHTML = arrBlog[i].name;
+                    title.innerHTML = arrBlog[i].title;
+                    content.innerHTML = arrBlog[i].content;
+                    dateTime.innerHTML = arrBlog[i].dateTime;
+                }
+                console.log(evt.content)
             },
-            error: function (error) {
-                console.log(error);
-            },
-        });
-    }
-
-    $(document).ready(function () {
-        loadBlogs();
+            error: function (evt) {
+                console.log(evt.content)
+            }
+        })
     })
+    $('#load-name').click(function (event) {
+        debugger
+        name = document.getElementById('name').value;
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type: 'GET',
+            url: "http://localhost:8080/api/blog?name=" + name,
+            success: function (evt) {
+                let table = document.getElementById("table-blog");
+                let trs = document.querySelectorAll("tr")
+                for(let i = 1; i < trs.length; i++) {
+                    trs[i].remove(); // xóa hết tất cả body => chỉ giữ lại header của table
+                }
 
-    function loadMore(nextPage) {
-        loadBlogs((nextPage, true));
-    }
-
-    function renderLoadMoreButton(blogPageData) {
-        if (blogPageData.number < blogPageData.total - 1) {
-            $("loadMoreContainer").html(
-                `
-                <button type="button" class="btn btn-secondary"
-                onclick="loadMore(${blogPageData.number + 1})">
-                Load More
-                </button>
-            `
-            );
-        } else {
-            $("#loadMoreContainer").remove();
-        }
-    }
-
-    load()
+                let arrBlog = evt.content;
+                for (let i = 0; i < arrBlog.length; i++) {
+                    let row = table.insertRow(i + 1);
+                    let id = row.insertCell(0);
+                    let name = row.insertCell(1);
+                    let title = row.insertCell(2);
+                    let content = row.insertCell(3);
+                    let dateTime = row.insertCell(4);
+                    id.innerHTML = arrBlog[i].id;
+                    name.innerHTML = arrBlog[i].name;
+                    title.innerHTML = arrBlog[i].title;
+                    content.innerHTML = arrBlog[i].content;
+                    dateTime.innerHTML = arrBlog[i].dateTime;
+                }
+                console.log(evt.content)
+            },
+            error: function (evt) {
+                console.log(evt.content)
+            }
+        })
+    });
 </script>
 </html>

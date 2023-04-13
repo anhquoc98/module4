@@ -24,7 +24,7 @@ public class CategoryRestController {
 
     @GetMapping("")
     public Page<CategoryBlog> showList(Model model, @RequestParam(defaultValue = "0") int page,
-                                       @RequestParam(required = false, defaultValue = "") String name, Model model) {
+                                       @RequestParam(required = false, defaultValue = "") String name) {
         Sort sort = Sort.by("nameCategory").descending();
         model.addAttribute("blog", personalBlogService.seachByName(name, PageRequest.of(page, 3, sort)));
         return categoryBlogService.seachByName(name, PageRequest.of(page, 3, sort));
