@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blog</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style>
+        .able table-striped {
+            width: 100%;
+        }
+
+        body {
+            background-color: cornflowerblue;
+        }
+    </style>
+</head>
+<body>
+<div class="container" style="margin-top: 20px">
+    <h2 style="text-align: center">Blog list</h2>
+    <div class="mb-3">
+        <a th:href="@{blog/create}" class="btn btn-secondary" style="margin-bottom: 5px">Create new blog</a>
+    </div>
+
+
+    <div class="mb-3">
+        <a th:href="@{category}" class="btn btn-secondary" style="margin-bottom: 5px">List Type new blog</a>
+    </div>
+
+<!--    <form action="/blog" method="get">-->
+<!--        <div class="form-group float-start w-30">-->
+<!--            <input type="text"-->
+<!--                   class="form-control" name="name" aria-describedby="helpId" th:value="${name}"-->
+<!--                   placeholder="Input name blog...">-->
+<!--        </div>-->
+<!--        <div class="float-start w-80">-->
+<!--            <button type="submit" class="btn btn-primary">Search</button>-->
+<!--        </div>-->
+<!--    </form>-->
+
+    <table class="table table-striped" style="margin-top: 20px">
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Title</td>
+            <td>Content</td>
+
+        </tr>
+        <tr th:each="blog1,row:${blog}">
+            <td th:text="${blog1.id}"></td>
+            <td th:text="${blog1.nameBlog}"></td>
+            <td th:text="${blog1.category.nameCategory}"></td>
+            <td th:text="${blog1.title}"></td>
+            <td style="width: 40%">
+                <a th:href="@{blog/update/{id}(id=${blog1.getId()})}" class="btn btn-secondary">Update</a>
+                <button type="button" th:attr="onclick=|deleteInfo('${blog1.id}','${blog1.nameBlog}')|"
+                        class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Delete
+                </button>
+<!--                <a th:href="@{/blog/view/{id}(id=${blog.getId()})}" class="btn btn-secondary">View</a>-->
+            </td>
+        </tr>
+    </table>
+    <div>
+        <a th:href="@{'/blog'(page=${blog.number - 1})}" th:if="${blog.hasPrevious()}">Previous</a>
+        <span th:text="${blog.number + 1}"></span>/<span th:text="${blog.totalPages}"></span>
+        <a th:href="@{'/blog'(page=${blog.number + 1})}" th:if="${blog.hasNext()}">Next</a>
+    </div>
+
+
+    <!--  Modal xóa  <%-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete blog</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="/blog/delete">
+                    <div class="modal-body">
+                        <label for="id"></label><input type="text" hidden id="id" name="id"
+                                                             value="${blog.id}">
+                        Do you want to delete <span id="deleteName"
+                                                    style="color: brown; font-weight: bold">${blog.nameBlog}</span>
+                        ?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Confim</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        function deleteInfo(id, nameBlog) {
+            document.getElementById("id").value = id;
+            document.getElementById("nameBlog").innerText = nameBlog;
+        }
+    </script>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+</html>
+
